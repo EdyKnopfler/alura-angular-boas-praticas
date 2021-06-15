@@ -1,0 +1,24 @@
+<header class="sticky-top">
+  <nav class="navbar navbar-light bg-white">
+    <a class="navbar-brand ms-2">Gatito Book</a>
+
+    <!-- async: pipe para fazer subscribe em Observables direto no template.
+         Colocamos o dado na variável user. -->
+    <div *ngIf="user$ | async as user" class="">
+
+      <!-- Lembra do else com template? -->
+      <div *ngIf="user.name; else login">
+        <i class="fa fa-user-circle me-1"></i>
+        <a class="me-3">{{ user.name }}</a>
+        <a class="me-2" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+<ng-template #login>
+  <span class="navbar-text">
+    <a routerLink="">Login</a>
+  </span>
+</ng-template>

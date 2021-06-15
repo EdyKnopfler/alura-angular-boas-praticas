@@ -1,0 +1,57 @@
+<h4 class="text-center">Registre-se e mostre seu pet ao mundo!</h4>
+
+<!-- Formulário reativo (veja no componente) -->
+<form class="form mt-4 mb-4" [formGroup]="novoUsuarioForm" (ngSubmit)="cadastrar()">
+  <div class="form-group mb-3">
+    <!--- formControlName: atributo no FormGroup -->
+    <input placeholder="e-mail" class="form-control" formControlName="email">
+    <!-- Validações :) -->
+    <!-- touched: se o usuário passou por ali -->
+    <app-mensagem mensagem="Obrigatório!"
+        *ngIf="novoUsuarioForm.get('email')?.errors?.required && novoUsuarioForm.get('email')?.touched">
+    </app-mensagem>
+    <app-mensagem mensagem="E-mail inválido!"
+        *ngIf="novoUsuarioForm.get('email')?.errors?.email && novoUsuarioForm.get('email')?.touched">
+    </app-mensagem>
+  </div>
+  <div class="form-group mb-3">
+    <input placeholder="nome completo" class="form-control" formControlName="fullName">
+    <app-mensagem mensagem="Mín. 4 caracteres!"
+        *ngIf="novoUsuarioForm.get('fullName')?.errors && novoUsuarioForm.get('fullName')?.touched"></app-mensagem>
+  </div>
+  <div class="form-group mb-3">
+    <input placeholder="login" class="form-control" formControlName="userName">
+    <app-mensagem mensagem="Obrigatório!"
+        *ngIf="novoUsuarioForm.get('userName')?.errors?.required && novoUsuarioForm.get('userName')?.touched">
+    </app-mensagem>
+
+    <!-- validaçõe customizadas (ver minusculo.validator.ts e usuario-existe.service.ts) -->
+    <app-mensagem mensagem="Use apenas minúsculas!"
+        *ngIf="novoUsuarioForm.get('userName')?.errors?.minusculo && novoUsuarioForm.get('userName')?.touched">
+    </app-mensagem>
+
+    <app-mensagem mensagem="Usuário já existe!"
+        *ngIf="novoUsuarioForm.get('userName')?.errors?.existente && novoUsuarioForm.get('userName')?.touched">
+    </app-mensagem>
+  </div>
+  <div class="form-group mb-3">
+    <input placeholder="senha" class="form-control" type="password" formControlName="password">
+    <app-mensagem mensagem="Obrigatória!"
+        *ngIf="novoUsuarioForm.get('password')?.errors?.required && novoUsuarioForm.get('password')?.touched">
+    </app-mensagem>
+  </div>
+  <div class="form-group mb-3">
+    <input placeholder="confirme a senha" class="form-control" type="password" formControlName="confirmPassword">
+
+    <!-- Validações envolvendo mais de um form (ver senhas-iguais.validator.ts) -->
+    <app-mensagem mensagem="Senhas não coincidem!"
+        *ngIf="novoUsuarioForm.errors?.senhasIguais && novoUsuarioForm.get('confirmPassword')?.touched">
+    </app-mensagem>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+</form>
+
+<p>
+  Já tem cadastro?
+  <a routerLink="">Entre!</a>
+</p>

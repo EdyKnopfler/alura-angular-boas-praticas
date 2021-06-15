@@ -1,0 +1,18 @@
+<h4 class="text-center">Login</h4>
+
+<app-mensagem *ngIf="erro" mensagem="Usuário ou senha inválidos."></app-mensagem>
+
+<form class="form mt-4 mb-4" (ngSubmit)="login()">
+  <div class="form-group mb-3">
+    <input class="form-control" placeholder="nome do usuário" name="usuario" [(ngModel)]="usuario">
+  </div>
+  <div class="form-group mb-3">
+    <input class="form-control" placeholder="senha" type="password" [(ngModel)]="senha" name="senha">
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+</form>
+
+<p>
+  Não é um usuário?
+  <a routerLink="novousuario">Cadastre-se</a>
+</p>
