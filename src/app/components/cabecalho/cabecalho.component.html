@@ -1,6 +1,18 @@
 <header class="sticky-top">
   <nav class="navbar navbar-light bg-white">
-    <a class="navbar-brand ms-2">Gatito Book</a>
+    <a class="navbar-brand ms-2">
+
+      <!-- Usamos a referência para chamar métodos do menu -->
+      <i class="fa fa-bars me-2" (click)="menu.abreMenu()" (keyup.space)="menu.abreMenu()"></i>
+
+      Gatito Book
+    </a>
+
+    <app-menu #menu> <!-- referência #menu -->
+      <ul class="list-unstyled">
+        <a [routerLink]="['animais', 'novo']">Novo animal</a>
+      </ul>
+    </app-menu>
 
     <!-- async: pipe para fazer subscribe em Observables direto no template.
          Colocamos o dado na variável user. -->
@@ -19,6 +31,6 @@
 
 <ng-template #login>
   <span class="navbar-text">
-    <a routerLink="">Login</a>
+    <a class="me-2" routerLink="">Login</a>
   </span>
 </ng-template>

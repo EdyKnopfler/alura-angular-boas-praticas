@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       (err) => {
         this.erro = true;
         console.log(err);
+        alert(err);
       }
     )
   }

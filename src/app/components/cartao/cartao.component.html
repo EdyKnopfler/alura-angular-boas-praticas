@@ -1,0 +1,9 @@
+<div class="card border-light text-center">
+  <h4 class="card-header" *ngIf="titulo">{{ titulo }}</h4>
+  <div class="card-block text-justify">
+
+    <!-- "projeção" de conteúdo (ver grade-fotos-animais.component.html) -->
+    <ng-content></ng-content>
+
+  </div>
+</div>

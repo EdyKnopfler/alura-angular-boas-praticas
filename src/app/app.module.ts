@@ -1,3 +1,4 @@
+import { AutenticacaoModule } from './autenticacao/autenticacao.module';
 import { RodapeModule } from './components/rodape/rodape.module';
 import { CabecalhoModule } from './components/cabecalho/cabecalho.module';
 import { NgModule } from '@angular/core';
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     HttpClientModule,
     CabecalhoModule,
-    RodapeModule
+    RodapeModule,
+    AutenticacaoModule  // tem um Interceptor registrados
   ],
   providers: [],
   bootstrap: [AppComponent]

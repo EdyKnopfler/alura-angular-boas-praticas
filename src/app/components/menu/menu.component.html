@@ -1,0 +1,13 @@
+
+<!-- ngClass: controle programático do CSS :)
+     objeto { classe: condicional, ...} -->
+<div [ngClass]="{ 'active-menu': mostraMenu }">
+  <div class="menu-bar">
+    <i class="fa fa-window-close" (click)="abreMenu()" (keyup.space)="abreMenu()"></i>
+
+    <!-- os itens vêm do componente -->
+    <ng-content></ng-content>
+  </div>
+
+  <div class="overlay " (click)="abreMenu()"></div>
+</div>

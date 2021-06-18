@@ -1,0 +1,24 @@
+<div *ngIf="comentarios$ | async as comentarios">
+  <ul class="list-unstyled mt-2 comentario-list">
+    <li *ngFor="let comentario of comentarios">
+      <p class="text-dark mb-1">
+        <strong>{{ comentario.userName }}</strong> <br>
+        <em>{{ comentario.date | date: 'dd/MM/yyyy HH:mm' }}</em>
+      </p>
+      <p class="break-word mb-2">{{ comentario.text }}</p>
+    </li>
+  </ul>
+
+  <form class="mt-4" [formGroup]="comentarioForm" (submit)="gravar()">
+    <div class="input-group mb-1">
+      <textarea class="form-control" formControlName="comentario"></textarea>
+    </div>
+    <div>
+      <button [disabled]="comentarioForm.invalid" class="btn btn-primary pull-left me-3" type="submit">
+        Publicar
+      </button>
+      <app-mensagem mensagem="Entre 10 e 300 caracteres."
+          *ngIf="comentarioForm.invalid && comentarioForm.get('comentario')?.touched"></app-mensagem>
+    </div>
+  </form>
+</div>

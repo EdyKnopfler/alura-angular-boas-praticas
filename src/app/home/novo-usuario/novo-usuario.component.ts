@@ -32,8 +32,8 @@ export class NovoUsuarioComponent implements OnInit {
         fullName: ['', [Validators.minLength(4)]],
         // o último array é o de validações assíncronas (ver usuario-existe.service.ts)
         userName: ['', [Validators.required, minusculoValidator], [this.existeService.usuarioJaExiste()]],
-        password: ['', [Validators.required, ]],
-        confirmPassword: ['', [Validators.required, ]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
       },
       { validators: [senhasIguaisValidator] }
     );
